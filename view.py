@@ -16,7 +16,6 @@ hashed_passwords = stauth.Hasher(["kikagaku"]).generate()
 
 # Authenticate インスタンスの作成
 authenticator = stauth.Authenticate(
-    name='leaderboard',
     username_list=users,
     password_list=hashed_passwords,
     cookie_expiry_days=30
