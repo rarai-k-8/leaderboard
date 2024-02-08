@@ -8,7 +8,19 @@ passwords = ["kikagaku"]
 
 hashed_passwords = stauth.Hasher(passwords).generate()
 
-authenticator = stauth.Authenticate(users, users, hashed_passwords, "leaderboard", "abcdef", cookie_expiry_days=30)
+import streamlit_authenticator as stauth
+
+# ユーザー名とパスワードのリスト
+users = ["kikagaku"]
+hashed_passwords = stauth.Hasher(["kikagaku"]).generate()
+
+# Authenticate インスタンスの作成
+authenticator = stauth.Authenticate(
+    name='leaderboard',
+    username_list=users,
+    password_list=hashed_passwords,
+    cookie_expiry_days=30
+)
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
